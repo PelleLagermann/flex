@@ -57,8 +57,7 @@ const authModule = {
       });
     },
     signIn({ commit }, credentials) {
-      console.log('spinner: true');
-      commit('toggleSpinner', true, { root: true });
+      // commit('toggleSpinner', true, { root: true });
 
       auth.signInWithEmailAndPassword(credentials.email, credentials.password)
         .then(() => {
@@ -95,7 +94,7 @@ const authModule = {
         });
     },
     signOut({ commit }) {
-      commit('toggleSpinner', true, { root: true });
+      // commit('toggleSpinner', true, { root: true });
       auth.signOut();
     },
     getExtraUserData({ commit }) {

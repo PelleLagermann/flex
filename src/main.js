@@ -22,6 +22,15 @@ library.add(
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
+// Setting up nav-guards
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.authRequired) && !store.state.auth.user) {
+    next({ path: '/auth' });
+  } else {
+    next();
+  }
+});
+
 Vue.config.productionTip = false;
 
 new Vue({

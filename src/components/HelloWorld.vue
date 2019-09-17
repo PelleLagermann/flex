@@ -21,6 +21,12 @@
       <li>Color palette - Maybe choose from Refactoring UI to keet it simple?</li>
     </ul>
 
+    <h2>Routing</h2>
+    <ul>
+      <li>Code-splitting eller ej? -> Langsommere initial load,
+        men kan måske komme til at virke offline hvis ikke</li>
+    </ul>
+
     <hr>
 
     <h1>{{ msg }}</h1>
