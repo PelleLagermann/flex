@@ -1,0 +1,139 @@
+$xs-max: 575px;
+$sm-min: 576px;
+$sm-max: 767px;
+$md-min: 768px;
+$md-max: 991px;
+$lg-min: 992px;
+$lg-max: 1199px;
+$xl-min: 1200px;
+
+// D E V I C E   S P E C I F I C
+@mixin bp-xs {
+  @media (max-width: $xs-max) {
+    @content;
+  }
+}
+
+@mixin bp-sm {
+  @media (max-width: $sm-max) and (min-width: $sm-min) {
+    @content;
+  }
+}
+
+@mixin bp-md {
+  @media (max-width: $md-max) and (min-width: $md-min) {
+    @content;
+  }
+}
+
+@mixin bp-lg {
+  @media (max-width: $lg-max) and (min-width: $lg-min) {
+    @content;
+  }
+}
+
+@mixin bp-xl {
+  @media (min-width: $xl-min) {
+    @content;
+  }
+}
+
+// F R O M   D E V I C E
+@mixin bp-sm-min {
+  @media (min-width: $sm-min) {
+    @content;
+  }
+}
+
+@mixin bp-md-min {
+  @media (min-width: $md-min) {
+    @content;
+  }
+}
+
+@mixin bp-lg-min {
+  @media (min-width: $lg-min) {
+    @content;
+  }
+}
+
+@mixin bp-xl-min {
+  @media (min-width: $xl-min) {
+    @content;
+  }
+}
+
+// T O   D E V I C E
+@mixin bp-sm-max {
+  @media (max-width: $sm-max) {
+    @content;
+  }
+}
+
+@mixin bp-md-max {
+  @media (max-width: $md-max) {
+    @content;
+  }
+}
+
+@mixin bp-lg-max {
+  @media (max-width: $lg-max) {
+    @content;
+  }
+}
+
+// P O R T R A I T   A N D   L A N D S C A P E
+@mixin bp-xs--portrait {
+  @media (max-width: $xs-max) and (orientation: portrait) {
+    @content;
+  }
+}
+@mixin bp-xs--landscape {
+  @media (max-width: $xs-max) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin bp-sm--portrait {
+  @media (max-width: $sm-max) and (min-width: $sm-min) and (orientation: portrait) {
+    @content;
+  }
+}
+@mixin bp-sm--landscape {
+  @media (max-width: $sm-max) and (min-width: $sm-min) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin bp-sm-max--portrait {
+  @media (max-width: $sm-max) and (orientation: portrait) {
+    @content;
+  }
+}
+@mixin bp-sm-max--landscape {
+  @media (max-width: $sm-max) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin bp-md--portrait {
+  @media (max-width: $md-max) and (min-width: $md-min) and (orientation: portrait) {
+    @content;
+  }
+}
+@mixin bp-md--landscape {
+  @media (max-width: $md-max) and (min-width: $md-min) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin bp-md-max--portrait {
+  @media (max-width: $md-max) and (orientation: portrait) {
+    @content;
+  }
+}
+@mixin bp-md-max--landscape {
+  @media (max-width: $md-max) and (orientation: landscape) {
+    @content;
+  }
+}

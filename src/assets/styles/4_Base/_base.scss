@@ -1,0 +1,21 @@
+html {
+    box-sizing: border-box;
+    font-family: var(--font-default);
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {    
+    margin: 0;
+    background-color: var(--neutral-9); 
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-header);
+    font-weight: 300;
+}

@@ -1,0 +1,46 @@
+.svg-gradient-settings {
+  /* Hiding this content since it's just settings. See - https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* set gradient settings */
+.svg-gradient-x,
+.svg-gradient-x-hover:hover {
+  path {    
+    fill: url(#linear-x);    
+  }
+}
+
+.svg-gradient-y,
+.svg-gradient-y-hover:hover {
+  path {
+    fill: url(#linear-y);
+  }
+}
+
+.svg-gradient-radial {
+  path {
+    fill: url(#radial);
+  }  
+}
+
+/* gradient color-schemes */
+.svg-gradient-stop1 {
+  stop-color: var(--neutral-8);
+}
+
+.svg-gradient-stop2 {
+  stop-color: var(--neutral-6);  
+}
+
+
+
+/* demo styling */
+* {
+/* resetting the box model for all elements */
+box-sizing: border-box;
+}
