@@ -27,6 +27,9 @@
         men kan måske komme til at virke offline hvis ikke</li>
     </ul>
 
+    <h2>HTML Head</h2>
+    <a href="https://htmlhead.dev/">https://htmlhead.dev/</a>
+
     <hr>
 
     <h1>{{ msg }}</h1>
