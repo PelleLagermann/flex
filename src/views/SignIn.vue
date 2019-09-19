@@ -1,5 +1,7 @@
 <template>
-  <form @submit="signInHandler">
+<div>
+  <h1>SIGN IN</h1>
+  <form @submit.prevent="signIn">
     <label>
       <span>E-mail</span>
       <input type="email"
@@ -24,36 +26,35 @@
       <input type="submit" value="Sign in">
     </div>
   </form>
+
+  <router-link to="/sign-up">Sign Up</router-link>
+</div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import firebase from 'firebase';
 
 export default {
   name: 'SignIn',
   components: { },
   data() {
     return {
-      email: '',
-      password: '',
+      email: 'pelj@alka.dk',
+      password: 'Reggie',
     };
   },
   computed: {
-    ...mapState([
-      'authError',
-    ]),
+
   },
   methods: {
-    ...mapActions('auth', ['signIn']),
-    signInHandler(evt) {
-      evt.preventDefault();
-
-      this.signIn({ email: this.email, password: this.password })
-        .then((a, b, c) => {
-          console.log(a, b, c);
+    signIn() {
+      firebase.auth().signInWithEmailAndPassword(this.$data.email, this.$data.password)
+        .then(() => {
+          this.$router.replace('home');
         })
-        .catch((a, b, c) => {
-          console.log(a, b, c);
+        .catch((error) => {
+          console.log('sign in errro', error);
+          // HANDLE LOGIN ERROR
         });
     },
   },

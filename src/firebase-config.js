@@ -37,10 +37,10 @@ const usersCollection = db.collection('users');
 const registrationsCollection = db.collection('registrations');
 
 export {
+  firebase,
   db,
   auth,
   currentUser,
   usersCollection,
   registrationsCollection,
 };
-

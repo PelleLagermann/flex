@@ -5,8 +5,30 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+
+    <app-menu></app-menu>
   </div>
 </template>
+
+<script>
+import AppMenu from '@/components/app-menu.vue';
+
+export default {
+  name: 'App',
+  components: {
+    AppMenu,
+  },
+  data() {
+    return { };
+  },
+  computed: {
+
+  },
+  methods: {
+
+  },
+};
+</script>
 
 <style lang="scss">
 #app {

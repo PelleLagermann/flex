@@ -8,9 +8,12 @@ import {
   faShoppingCart, faClipboardCheck, faUtensils, faGift, faGlobeEurope,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
+import { firebase } from './firebase-config';
 import store from './store/store';
 import router from './router';
 import App from './App.vue';
+
+console.log('firebase', firebase);
 
 // Adding icons to project
 library.add(
@@ -22,19 +25,15 @@ library.add(
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-// Setting up nav-guards
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.authRequired) && !store.state.auth.user) {
-    next({ path: '/auth' });
-  } else {
-    next();
+Vue.config.productionTip = false;
+let app = null;
+
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App),
+    }).$mount('#app');
   }
 });
-
-Vue.config.productionTip = false;
-
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app');
