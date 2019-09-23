@@ -19,6 +19,7 @@
     <h2>Design</h2>
     <ul>
       <li>Color palette - Maybe choose from Refactoring UI to keet it simple?</li>
+      <li>Palette 9</li>
     </ul>
 
     <h2>Routing</h2>
@@ -29,6 +30,20 @@
 
     <h2>HTML Head</h2>
     <a href="https://htmlhead.dev/">https://htmlhead.dev/</a>
+
+    <h2>Firebase</h2>
+    <h3>Registrations</h3>
+    <ul>
+      <li>UserId</li>
+      <li>Dato</li>
+      <li>Fra</li>
+      <li>Til</li>
+      <li>Total</li>      
+    </ul>
+
+    <h3>Users</h3>
+
+    <h3>Settings</h3>
 
     <hr>
 
