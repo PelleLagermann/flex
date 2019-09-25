@@ -1,23 +1,67 @@
 :root {  
-  --primary-0: var(--cyan-0);
-  --primary-1: var(--cyan-1);
-  --primary-2: var(--cyan-2);
-  --primary-3: var(--cyan-3);
-  --primary-4: var(--cyan-4);
-  --primary-5: var(--cyan-5);
-  --primary-6: var(--cyan-6);
-  --primary-7: var(--cyan-7);
-  --primary-8: var(--cyan-8);
-  --primary-9: var(--cyan-9);
+  --primary-0: var(--light-blue--vivid-0);
+  --primary-1: var(--light-blue--vivid-1);
+  --primary-2: var(--light-blue--vivid-2);
+  --primary-3: var(--light-blue--vivid-3);
+  --primary-4: var(--light-blue--vivid-4);
+  --primary-5: var(--light-blue--vivid-5);
+  --primary-6: var(--light-blue--vivid-6);
+  --primary-7: var(--light-blue--vivid-7);
+  --primary-8: var(--light-blue--vivid-8);
+  --primary-9: var(--light-blue--vivid-9);
+
+  --secondary-0: var(--pink--vivid-0);
+  --secondary-1: var(--pink--vivid-1);
+  --secondary-2: var(--pink--vivid-2);
+  --secondary-3: var(--pink--vivid-3);
+  --secondary-4: var(--pink--vivid-4);
+  --secondary-5: var(--pink--vivid-5);
+  --secondary-6: var(--pink--vivid-6);
+  --secondary-7: var(--pink--vivid-7);
+  --secondary-8: var(--pink--vivid-8);
+  --secondary-9: var(--pink--vivid-9);
   
-  --neutral-0: var(--blue-grey-0);
-  --neutral-1: var(--blue-grey-1);
-  --neutral-2: var(--blue-grey-2);
-  --neutral-3: var(--blue-grey-3);
-  --neutral-4: var(--blue-grey-4);
-  --neutral-5: var(--blue-grey-5);
-  --neutral-6: var(--blue-grey-6);
-  --neutral-7: var(--blue-grey-7);
-  --neutral-8: var(--blue-grey-8);
-  --neutral-9: var(--blue-grey-9);
+  --neutral-0: var(--cool-grey-0);
+  --neutral-1: var(--cool-grey-1);
+  --neutral-2: var(--cool-grey-2);
+  --neutral-3: var(--cool-grey-3);
+  --neutral-4: var(--cool-grey-4);
+  --neutral-5: var(--cool-grey-5);
+  --neutral-6: var(--cool-grey-6);
+  --neutral-7: var(--cool-grey-7);
+  --neutral-8: var(--cool-grey-8);
+  --neutral-9: var(--cool-grey-9);
+
+  --error-0: var(--red--vivid-0);
+  --error-1: var(--red--vivid-1);
+  --error-2: var(--red--vivid-2);
+  --error-3: var(--red--vivid-3);
+  --error-4: var(--red--vivid-4);
+  --error-5: var(--red--vivid-5);
+  --error-6: var(--red--vivid-6);
+  --error-7: var(--red--vivid-7);
+  --error-8: var(--red--vivid-8);
+  --error-9: var(--red--vivid-9);
+
+  --warning-0: var(--yellow--vivid-0);
+  --warning-1: var(--yellow--vivid-1);
+  --warning-2: var(--yellow--vivid-2);
+  --warning-3: var(--yellow--vivid-3);
+  --warning-4: var(--yellow--vivid-4);
+  --warning-5: var(--yellow--vivid-5);
+  --warning-6: var(--yellow--vivid-6);
+  --warning-7: var(--yellow--vivid-7);
+  --warning-8: var(--yellow--vivid-8);
+  --warning-9: var(--yellow--vivid-9);
+
+  --success-0: var(--teal-0);
+  --success-1: var(--teal-1);
+  --success-2: var(--teal-2);
+  --success-3: var(--teal-3);
+  --success-4: var(--teal-4);
+  --success-5: var(--teal-5);
+  --success-6: var(--teal-6);
+  --success-7: var(--teal-7);
+  --success-8: var(--teal-8);
+  --success-9: var(--teal-9);
 }
