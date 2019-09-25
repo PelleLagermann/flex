@@ -7,6 +7,11 @@
       "tidsreg" er tilgengæld ledigt som både com, io og app
     </p>
 
+    <h2>Demo URL</h2>
+    <p>
+      <a href="https://tidsreg.netlify.com" target="_blank">https://tidsreg.netlify.com</a>
+    </p>
+
     <h2>Internationalization</h2>
     <div>
       <a href="https://kazupon.github.io/vue-i18n/started.html#html">Vue I18n</a> <br>
