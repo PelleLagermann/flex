@@ -2,12 +2,8 @@ import Vue from 'vue';
 import './registerServiceWorker';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import {
-  faUser, faUserPlus, faSearch, faQuoteRight,
-  faSignInAlt, faSignOutAlt, faArrowLeft, faPlusCircle,
-  faShoppingCart, faClipboardCheck, faUtensils, faGift, faGlobeEurope,
-} from '@fortawesome/free-solid-svg-icons';
-import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
+import { faSlash, faStopwatch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faClock } from '@fortawesome/free-regular-svg-icons';
 import { firebase } from './firebase-config';
 import store from './store/store';
 import router from './router';
@@ -17,10 +13,14 @@ console.log('firebase', firebase);
 
 // Adding icons to project
 library.add(
-  faUser, faUserPlus, faSearch, faQuoteRight,
-  faSignInAlt, faSignOutAlt, faArrowLeft, faPlusCircle,
-  faShoppingCart, faClipboardCheck, faUtensils, faGift, faGlobeEurope,
-  faSquare, faCheckSquare,
+  // SOLID ICONS
+  faSlash,
+  faStopwatch,
+  faUser,
+
+  // REGULR ICONS
+  faCalendarAlt,
+  faClock,
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

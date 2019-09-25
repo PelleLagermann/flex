@@ -4,8 +4,10 @@ import Router from 'vue-router';
 import SignIn from './views/SignIn.vue';
 import SignUp from './views/SignUp.vue';
 import Home from './views/Home.vue';
-import Account from './views/Account.vue';
+import About from './views/About.vue';
+import Profile from './views/Profile.vue';
 import Settings from './views/Settings.vue';
+import Overview from './views/Overview.vue';
 
 Vue.use(Router);
 
@@ -31,13 +33,21 @@ const router = new Router({
       name: 'sign-up',
       component: SignUp,
     },
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   // route level code-splitting
+    //   // this generates a separate chunk (about.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+    // },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      component: About,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/home',
@@ -48,9 +58,9 @@ const router = new Router({
       },
     },
     {
-      path: '/account',
-      name: 'account',
-      component: Account,
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
       meta: {
         requiresAuth: true,
       },
@@ -59,6 +69,14 @@ const router = new Router({
       path: '/settings',
       name: 'settings',
       component: Settings,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/overview',
+      name: 'overview',
+      component: Overview,
       meta: {
         requiresAuth: true,
       },
