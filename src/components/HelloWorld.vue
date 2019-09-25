@@ -1,6 +1,12 @@
 <template>
   <div class="hello">
     <h1>Noter</h1>
+    <h2>Navn / domæne</h2>
+    <p>
+      "Reggie" er taget <br>
+      "tidsreg" er tilgengæld ledigt som både com, io og app
+    </p>
+
     <h2>Internationalization</h2>
     <div>
       <a href="https://kazupon.github.io/vue-i18n/started.html#html">Vue I18n</a> <br>
@@ -38,7 +44,7 @@
       <li>Dato</li>
       <li>Fra</li>
       <li>Til</li>
-      <li>Total</li>      
+      <li>Total</li>
     </ul>
 
     <h3>Users</h3>
