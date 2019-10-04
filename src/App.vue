@@ -2,12 +2,12 @@
   <div id="app">
     <app-header></app-header>
 
+    <router-view/>
+
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-
-    <router-view/>
 
     <app-menu></app-menu>
   </div>
