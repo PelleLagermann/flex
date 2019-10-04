@@ -21,7 +21,7 @@
           <span class="weekday-slider__item-btn-inner">
             <span class="weekday-slider__item-day">{{day.date.format('ddd')}}</span>
             <span class="weekday-slider__item-hours">
-              7,5
+              7,75
               <!-- {{weekday.hours}} -->
             </span>
           </span>
@@ -114,6 +114,7 @@ export default {
       color: var(--neutral-1);
       font-size: 1.2rem;
       line-height: 1.6;
+      letter-spacing: .1em;
       text-transform: uppercase;
 
       .is-today & {
@@ -153,7 +154,7 @@ export default {
 
     &__item-hours {
       color: var(--neutral-9);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
   }
 </style>
