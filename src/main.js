@@ -2,7 +2,9 @@ import Vue from 'vue';
 import './registerServiceWorker';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faSlash, faStopwatch, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars, faSlash, faStopwatch, faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import { faCalendarAlt, faClock } from '@fortawesome/free-regular-svg-icons';
 import Ripple from 'vue-ripple-directive';
 import { firebase } from './firebase-config';
@@ -15,6 +17,7 @@ console.log('firebase', firebase);
 // Adding icons to project
 library.add(
   // SOLID ICONS
+  faBars,
   faSlash,
   faStopwatch,
   faUser,

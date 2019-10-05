@@ -1,10 +1,4 @@
 <template>
-  <!-- Styling
-  - Current day
-  - Active day
-  - Inactive days (current month)
-  - Inactive days (Prev / next month) -->
-
   <div class="weekday-slider">
     <ol class="weekday-slider__list">
       <li
@@ -137,12 +131,12 @@ export default {
 
       .is-today & {
         background-color: var(--primary-1);
-        font-weight: 700;
         text-shadow: .1em .1em .2em rgba(0, 0, 0, 0.6);
       }
 
       .is-active & {
         background-color: var(--secondary-4);
+        font-weight: 700;
       }
     }
 

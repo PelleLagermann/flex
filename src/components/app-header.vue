@@ -57,7 +57,8 @@ export default {
     .app-header {
       display: flex;
       justify-content: space-between;
-
+      align-items: center;
+      height: 100%;
     }
 
     .header-logo {

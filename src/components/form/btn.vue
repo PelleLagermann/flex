@@ -33,6 +33,17 @@ export default {
   @import '../../assets/styles/2_Tools/media-queries';
 
   .btn {
+    &--clear {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+
+      &:focus {
+        outline: 0;
+      }
+    }
 
     &--link {
       display: inline-block;
