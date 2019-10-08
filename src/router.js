@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from './store/store';
 import SignIn from './views/SignIn.vue';
 import SignUp from './views/SignUp.vue';
 import Home from './views/Home.vue';
@@ -99,6 +100,8 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
+
+  store.commit('toggleMenu', { forceClose: true });
 });
 
 export default router;

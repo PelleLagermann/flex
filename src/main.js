@@ -3,7 +3,8 @@ import './registerServiceWorker';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
-  faBars, faSlash, faStopwatch, faUser,
+  faBars, faCog, faExclamationCircle,
+  faSignInAlt, faSignOutAlt, faSlash, faStopwatch, faUser, faUserCog,
 } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarAlt, faClock } from '@fortawesome/free-regular-svg-icons';
 import Ripple from 'vue-ripple-directive';
@@ -18,9 +19,14 @@ console.log('firebase', firebase);
 library.add(
   // SOLID ICONS
   faBars,
+  faCog,
+  faExclamationCircle,
+  faSignInAlt,
+  faSignOutAlt,
   faSlash,
   faStopwatch,
   faUser,
+  faUserCog,
 
   // REGULR ICONS
   faCalendarAlt,

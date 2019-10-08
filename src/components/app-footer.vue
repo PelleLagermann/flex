@@ -44,6 +44,7 @@ export default {
     align-items: center;
     height: 100%;
     padding: .7rem 0;
+    border-top: 1px solid var(--neutral-0);
     background-color: var(--neutral-3);
   }
 
@@ -71,28 +72,28 @@ export default {
     color: var(--neutral-9);
     font-size: 2rem;
     letter-spacing: .2rem;
-    transform: translate(-50%, -100%)
+    transform: translate(-50%, calc(-100% + 1px))
   }
 
   .balance:before,
   .balance:after {
     content: " ";
     position: absolute;
-    bottom: -1px;
+    bottom: 0px;
     width: 5px;
     height: 5px;
     border: 1px solid var(--neutral-0);
   }
 
   .balance:before {
-    left: -6px;
+    left: -5px;
     border-bottom-right-radius: 6px;
     border-width: 0 1px 1px 0;
     box-shadow: 2px 2px 0 var(--neutral-3);
   }
 
   .balance:after {
-      right: -6px;
+      right: -5px;
       border-bottom-left-radius: 6px;
       border-width: 0 0 1px 1px;
       box-shadow: -2px 2px 0 var(--neutral-3);

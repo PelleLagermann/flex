@@ -11,11 +11,17 @@ export default new Vuex.Store({
     settings: settingsModule,
   },
   state: {
-    menuOpen: false,
+    menuOpen: null,
   },
   mutations: {
-    toggleMenu(state) {
-      state.menuOpen = !state.menuOpen;
+    toggleMenu(state, payload) {
+      if (payload && payload.forceOpen) {
+        state.menuOpen = true;
+      } else if (payload && payload.forceClose) {
+        state.menuOpen = false;
+      } else {
+        state.menuOpen = !state.menuOpen;
+      }
     },
   },
   actions: {
