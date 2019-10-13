@@ -46,9 +46,6 @@ const router = new Router({
       path: '/about',
       name: 'about',
       component: About,
-      meta: {
-        requiresAuth: true,
-      },
     },
     {
       path: '/home',
@@ -92,10 +89,11 @@ router.beforeEach((to, from, next) => {
 
   console.log('navGuard - currentUser', currentUser);
   console.log('navGuard - requiresAuth', requiresAuth);
+  console.log('navGuard - to', to);
 
   if (requiresAuth && !currentUser) {
     next('sign-in');
-  } else if (currentUser && !requiresAuth) {
+  } else if (currentUser && (to.name === 'sign-in' || to.name === 'sign-up')) {
     next('home');
   } else {
     next();

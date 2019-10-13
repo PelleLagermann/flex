@@ -46,6 +46,16 @@ export default {
     padding: .7rem 0;
     border-top: 1px solid var(--neutral-0);
     background-color: var(--neutral-3);
+
+    &__menu-toggle {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+
+      &:active {
+        //background-color: red;
+      }
+    }
   }
 
   .icon {
