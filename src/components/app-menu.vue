@@ -1,6 +1,6 @@
 <template>
-  <div class="app-menu-outer" :class="{ 'is-open': menuOpen, 'is-closed': !menuOpen }">
-    <div class="app-menu-wrapper">
+
+    <div class="app-menu-wrapper" :class="{ 'is-open': menuOpen, 'is-closed': !menuOpen }">
       <ul class="app-menu" @click="closeMenu($event)">
         <li v-if="!currentUser" class="app-menu__item">
           <router-link to="/sign-in" class="app-menu__link">
@@ -47,7 +47,7 @@
         </btn>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -89,16 +89,35 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .app-menu-outer {
+  .app-menu-wrapper {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 200vmax;
-    height: 200vmax;
-    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     background-color: var(--neutral-3);
-    overflow: hidden;
-    transform: translate(-50%, 0) scale(.1);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity .5s ease-out;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 200vmax;
+      height: 200vmax;
+      border-radius: 50%;
+      background-color: var(--neutral-3);
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
 
     &.is-open {
       animation-name: openMenu;
@@ -115,28 +134,13 @@ export default {
       animation-fill-mode: forwards;
       z-index: 1;
     }
-  }
 
-  .app-menu-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity .5s ease-out;
-
-    .is-open & {
+    &.is-open {
       opacity: 1;
       transition-delay: 1s;
     }
 
-    .is-closed & {
+    &.is-closed {
       opacity: 1;
     }
   }
