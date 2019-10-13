@@ -72,6 +72,7 @@ export default {
       justify-content: center;
       align-items: center;
       color: #fff;
+      font-weight: 300;
 
       &__registered {
         position: relative;
@@ -111,11 +112,12 @@ export default {
 
         &__title {
           font-size: 1.1rem;
+          font-weight: 300;
         }
 
         &__number {
           font-size: 1.6rem;
-          font-weight: 700;
+          font-weight: 400;
         }
       }
     }

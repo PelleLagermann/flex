@@ -70,7 +70,8 @@ export default {
     border-bottom: 0;
     background-color: var(--neutral-3);
     color: var(--neutral-9);
-    font-size: 2rem;
+    font-size: 1.6rem;
+    font-weight: 300;
     letter-spacing: .2rem;
     transform: translate(-50%, calc(-100% + 1px))
   }
