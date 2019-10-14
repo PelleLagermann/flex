@@ -1,21 +1,18 @@
 html {
     height: 100%;
-    box-sizing: border-box;
     font-family: var(--font-default);
     font-size: 62.5%;
     font-weight: 400;
+    overflow: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
-}
-
-*, *:before, *:after {
-    box-sizing: inherit;
 }
 
 body {    
     height: 100%;
     margin: 0;
-    background-color: var(--neutral-9); 
+    background-color: var(--neutral-8);
+    overflow: hidden; 
 }
 
 h1, h2, h3, h4 {

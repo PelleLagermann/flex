@@ -33,6 +33,43 @@ export default {
   @import '../../assets/styles/2_Tools/media-queries';
 
   .btn {
+    display: inline-block;
+    padding: .5em 1em;
+    border: 0;
+    border-radius: 6px;
+    font-size: 1.6rem;
+    text-align: center;
+
+    &--primary {
+      background-color: var(--primary-1);
+      color: var(--neutral-9);
+    }
+
+    &--secondary {
+      background-color: var(--secondary-4);
+      color: var(--neutral-9);
+    }
+
+    &--neutral {
+      background-color: var(--neutral-4);
+      color: var(--neutral-9);
+    }
+
+    &--error {
+      background-color: var(--error-3);
+      color: var(--neutral-9);
+    }
+
+    &--warning {
+      background-color: var(--warning-5);
+      color: var(--neutral-2);
+    }
+
+    &--success {
+      background-color: var(--success-2);
+      color: var(--neutral-9);
+    }
+
     &--clear {
       display: inline-block;
       margin: 0;

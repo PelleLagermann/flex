@@ -1,7 +1,8 @@
 <template>
-<div>
-  <h1>SIGN IN</h1>
-  <form @submit.prevent="signIn">
+<div class="sign-in">
+  <form class="sign-in__form" @submit.prevent="signIn">
+    <h1 class="sign-in__header">SIGN IN</h1>
+
     <label>
       <span>E-mail</span>
       <input type="email"
@@ -23,7 +24,12 @@
     </label>
 
     <div>
-      <input type="submit" value="Sign in">
+      <btn type="submit" class="btn--primary">Sign in</btn>
+      <btn type="submit" class="btn--secondary">Sign in</btn>
+      <btn type="submit" class="btn--neutral">Sign in</btn>
+      <btn type="submit" class="btn--error">Sign in</btn>
+      <btn type="submit" class="btn--warning">Sign in</btn>
+      <btn type="submit" class="btn--success">Sign in</btn>
     </div>
   </form>
 
@@ -33,10 +39,13 @@
 
 <script>
 import firebase from 'firebase';
+import btn from '@/components/form/btn.vue';
 
 export default {
   name: 'SignIn',
-  components: { },
+  components: {
+    btn,
+  },
   data() {
     return {
       email: 'pelj@alka.dk',
@@ -62,5 +71,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .sign-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 
+    &__header {
+      text-align: center;
+    }
+
+    &__form {
+      width: 90vw;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 3px;
+      background-color: #fff;
+    }
+  }
 </style>
