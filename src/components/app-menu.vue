@@ -1,6 +1,6 @@
 <template>
 
-    <div class="app-menu-wrapper" :class="{ 'is-open': menuOpen, 'is-closed': !menuOpen }">
+    <div class="app-menu-wrapper" :class="{ 'is-hidden': !menuHasBeenOpened, 'is-open': menuOpen, 'is-closed': !menuOpen }">
       <ul class="app-menu" @click="closeMenu($event)">
         <li v-if="!currentUser" class="app-menu__item">
           <router-link to="/sign-in" class="app-menu__link">
@@ -61,12 +61,12 @@ export default {
     Btn,
   },
   data() {
-    return {
+    return {      
       currentUser: firebase.auth().currentUser,
     };
   },
   computed: {
-    ...mapState(['menuOpen']),
+    ...mapState(['menuHasBeenOpened', 'menuOpen']),
   },
   methods: {
     closeMenu(event) {
@@ -117,6 +117,10 @@ export default {
       overflow: hidden;
       transform: translate(-50%, -50%);
       z-index: -1;
+    }
+
+    &.is-hidden {
+      display: none;
     }
 
     &.is-open {

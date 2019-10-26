@@ -1,43 +1,43 @@
 <template>
-<div class="sign-in">
-  <form class="sign-in__form" @submit.prevent="signIn">
-    <h1 class="sign-in__header">SIGN IN</h1>
+  <div class="center-content--vertical sign-in">
+    <form class="hover-box sign-in__form" @submit.prevent="signIn">
+      <h1 class="hover-box__header sign-in__header">SIGN IN</h1>
 
-    <label-input 
-      label="E-mail"
-      v-model="email" 
-      input-type="email" 
-      id="email"      
-      required="required"
-      placeholder="email@example.com"
-      autocomplete="username">
-    </label-input>
+      <label-input 
+        label="E-mail"
+        v-model="email" 
+        input-type="email" 
+        id="email"      
+        required="required"
+        placeholder="email@example.com"
+        autocomplete="username">
+      </label-input>
 
-    <label-input 
-      label="Password"
-      v-model="password" 
-      input-type="password" 
-      id="password"
-      required="required"
-      placeholder="••••••••••"
-      autocomplete="current-password">
-    </label-input>    
+      <label-input 
+        label="Password"
+        v-model="password" 
+        input-type="password" 
+        id="password"
+        required="required"
+        placeholder="••••••••••"
+        autocomplete="current-password">
+      </label-input>    
 
-    <div>
-      <btn type="submit" :is-loading="isLoading" class="btn--primary btn--full">
-        Sign in
-        <template v-slot:icon>
-          <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon" />    
-        </template>
-      </btn>      
-    </div>
-  </form>
-  
-  <btn :href="signUpHref" @click.prevent="navigateToSignUp" class="btn--neutral">
-    Sign up
-    <font-awesome-icon :icon="['fas', 'user-plus']" class="icon" />
-  </btn>  
-</div>
+      <div>
+        <btn type="submit" :is-loading="submitting" class="btn--primary btn--full">
+          Sign in
+          <template v-slot:icon>
+            <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="icon" />    
+          </template>
+        </btn>      
+      </div>
+    </form>
+    
+    <btn :href="signUpHref" :is-loading="navigating" @click.prevent="navigateToSignUp" class="btn--neutral">
+      Sign up
+      <font-awesome-icon :icon="['fas', 'user-plus']" class="icon" />
+    </btn>  
+  </div>
 </template>
 
 <script>
@@ -56,11 +56,13 @@ export default {
       email: 'pelj@alka.dk',
       password: 'Reggie',   
       signUpHref: '',   
-      isLoading: false,
+      submitting: false,
+      navigating: false,
     };
   },  
   methods: {
     signIn() {
+      this.$data.submitting = true;
       firebase.auth().signInWithEmailAndPassword(this.$data.email, this.$data.password)
         .then(() => {
           this.$router.replace('home');
@@ -70,8 +72,8 @@ export default {
           // HANDLE LOGIN ERROR
         });
     },    
-    navigateToSignUp() {      
-      console.log("WHAMBA");
+    navigateToSignUp() {
+      this.$data.navigating = true;
       this.$router.push('sign-up');
     }
   },  
@@ -86,24 +88,8 @@ export default {
 <style lang="scss" scoped>
   @import '../assets/styles/4_Base/box-shadows';
 
-  .sign-in {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    
-    &__header {
-      text-align: center;
-    }
-
-    &__form {      
-      @include box-shadow-md;
-      width: 90vw;
-      margin: 0 auto;
-      padding: 2rem;
-      border-radius: 6px;
-      background-color: #fff;       
-    }
+  .sign-in {    
+    &__header { }
+    &__form { }
   }
 </style>

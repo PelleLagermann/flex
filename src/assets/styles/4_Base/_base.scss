@@ -12,10 +12,18 @@ body {
     height: 100%;
     margin: 0;
     background-color: var(--neutral-8);
+    color: var(--neutral-0);
     overflow: hidden; 
 }
 
 h1, h2, h3, h4 {
     font-family: var(--font-header);
     font-weight: 700;
+}
+
+input,
+button,
+textarea,
+select {
+    color: var(--neutral-0);
 }

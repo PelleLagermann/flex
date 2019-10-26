@@ -11,6 +11,7 @@ export default new Vuex.Store({
     settings: settingsModule,
   },
   state: {
+    menuHasBeenOpened: false,
     menuOpen: null,
   },
   mutations: {
@@ -21,6 +22,10 @@ export default new Vuex.Store({
         state.menuOpen = false;
       } else {
         state.menuOpen = !state.menuOpen;
+      }
+
+      if (state.menuOpen) {
+        state.menuHasBeenOpened = true;
       }
     },
   },

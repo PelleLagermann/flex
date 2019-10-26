@@ -1,0 +1,13 @@
+.hover-box {
+  @include box-shadow-md;
+
+  width: 90vw;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 6px;
+  background-color: #fff;
+
+  &__header {
+    text-align: center;
+  }
+}
