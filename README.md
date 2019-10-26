@@ -1,6 +1,24 @@
-# Reggie
-Time registration
+# tidsreg
 
+## Project setup
+```
+npm install
+```
 
-## Features for later releases
-- Location based IFTTT-service for registrering when you enter and leave a specific localtion eg. work
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
