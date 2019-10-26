@@ -1,0 +1,35 @@
+@mixin box-shadow-xs($tint: '--neutral-9-base') {
+  --box-shadow-tint: hsla(var(#{$tint}),.3);
+  box-shadow: 
+        0 3px 4px -2px rgba(0,0,0,0.5),
+        0 3px 5px -3px rgba(0,0,0,0.4),
+        0 9px 7px -4px rgba(0,0,0,0.3),
+        0 5px 8px -2px var(--box-shadow-tint);
+}
+
+@mixin box-shadow-sm($tint: '--neutral-9-base') {
+  --box-shadow-tint: hsla(var(#{$tint}),.3);
+  box-shadow: 
+        0 5px 8px -4px rgba(0,0,0,0.5),
+        0 10px 10px -5px rgba(0,0,0,0.4),
+        0 18px 13px -8px rgba(0,0,0,0.3),
+        0 10px 15px -2px var(--box-shadow-tint);
+}
+
+@mixin box-shadow-md($tint: '--neutral-9-base') {
+  --box-shadow-tint: hsla(var(#{$tint}),.3);
+  box-shadow: 
+        0 10px 15px -8px rgba(0,0,0,0.5),
+        0 20px 20px -10px rgba(0,0,0,0.4),
+        0 35px 25px -15px rgba(0,0,0,0.3),
+        0 20px 30px -3px var(--box-shadow-tint);
+}
+
+@mixin box-shadow-lg($tint: '--neutral-9-base') {
+  --box-shadow-tint: hsla(var(#{$tint}),.3);
+  box-shadow: 
+        0 20px 30px -15px rgba(0,0,0,0.5),
+        0 40px 40px -20px rgba(0,0,0,0.4),
+        0 70px 50px -30px rgba(0,0,0,0.3),
+        0 40px 60px -5px var(--box-shadow-tint);
+}
