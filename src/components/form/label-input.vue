@@ -1,12 +1,16 @@
 <template>
     <label class="label-input">
-        <span>
+        <span v-if="label" class="label-input__label">
             {{label}}
         </span>
-        <input :required="required"
-            :type="elementType"
-            @keyup="eventHandler"
-            :value="value"
+        <input 
+            class="label-input__input"
+            v-model="inputValue"
+            @input="eventHandler"
+            :id="id"
+            :name="name"
+            :type="inputType"
+            :required="required"
             :autocomplete="autocomplete"
             :placeholder="placeholder"/>
     </label>
@@ -16,17 +20,27 @@
 export default {
   name: 'label-input',
   props: {
+    id: String,
+    name: String,
     value: String,
     label: String,
-    elementType: String,
+    inputType: String,
     placeholder: String,
     required: Boolean,
     autocomplete: String,
   },
+  data() {
+    return {
+      inputValue: '',
+    }
+  },
   methods: {
-    eventHandler(event) {
-      this.$emit('change', event);
+    eventHandler() {
+      this.$emit('input', this.$data.inputValue);
     },
+  },
+  mounted() {
+    this.$data.inputValue = this.value;
   },
 };
 </script>
@@ -35,18 +49,28 @@ export default {
   @import '../../assets/styles/2_Tools/media-queries';
 
 .label-input {
-    span {
-        font-size: 18px;
-        width:100%;
+  display: block;
+  margin-bottom: 1rem;
+
+    &__label {
+      display: block;
+      width:100%;
+      font-size: 1.4rem;
     }
 
-    input[type=input],input[type=password],input[type=number]{
-        border: 1px solid #cccccc;
-        padding: 8px 15px;
-        border-radius: 6px;
-        background-color: white;
-        font-size: 18px;
-        width: 100vw;
+    &__input {
+      width: 100%;
+      padding: 8px 15px;
+      border: 1px solid var(--neutral-7);
+      border-radius: 6px;
+      background-color: var(--neutral-9);
+      font-size: 1.6rem;
+      transition: border-color .2s ease-in-out;
+
+      &:focus {
+        border-color: var(--primary-1);
+        outline: 0;
+      }
     }
 }
 </style>
