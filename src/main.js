@@ -4,8 +4,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   faBars, faCog, faExclamationCircle, faHome,
-  faSignInAlt, faSignOutAlt, faSlash, faStopwatch,
-  faTimes, faUser, faUserCog,
+  faSignInAlt, faSignOutAlt, faSlash, faSpinner, faStopwatch,
+  faTimes, faUser, faUserCog, faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarAlt, faClock } from '@fortawesome/free-regular-svg-icons';
 import Ripple from 'vue-ripple-directive';
@@ -26,10 +26,12 @@ library.add(
   faSignInAlt,
   faSignOutAlt,
   faSlash,
+  faSpinner,
   faStopwatch,
   faTimes,
   faUser,
   faUserCog,
+  faUserPlus,
 
   // REGULR ICONS
   faCalendarAlt,
