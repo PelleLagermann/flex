@@ -85,7 +85,7 @@ export default {
     }
 
     &__item {
-      width: calc(100% / 7);
+      width: calc(100% / 7);      
     }
 
     &__item-btn {
@@ -128,15 +128,18 @@ export default {
       height: 100%;
       padding: .7rem 0;
       background-color: var(--primary-3);
+      box-shadow: inset 0px 0px 3px 0px var(--primary-1);
 
       .is-today & {
         background-color: var(--primary-1);
         text-shadow: .1em .1em .2em rgba(0, 0, 0, 0.6);
+        box-shadow: none;
       }
 
       .is-active & {
         background-color: var(--secondary-4);
         font-weight: 700;
+        box-shadow: none;
       }
     }
 
