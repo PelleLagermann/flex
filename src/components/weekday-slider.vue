@@ -41,9 +41,9 @@ export default {
     };
   },
   computed: {
-    ...mapState('calendar', ['activeDate']),
+    ...mapState('registrations', ['activeDate']),
     ...mapState('settings', ['firstDayOfWeek']),
-    ...mapGetters('calendar', ['activeWeek']),
+    ...mapGetters('registrations', ['activeWeek']),
   },
   methods: {
     isToday(date) {
@@ -56,7 +56,7 @@ export default {
     setActiveDate(e, date) {
       // this.$data.activeDate =
       // console.log('e', e);
-      this.$store.commit('calendar/setActiveDate', date.format('YYYY-MM-DD'));
+      this.$store.commit('registrations/setActiveDate', date.format('YYYY-MM-DD'));
     },
   },
   mounted() {

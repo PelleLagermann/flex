@@ -14,8 +14,6 @@ import store from './store/store';
 import router from './router';
 import App from './App.vue';
 
-console.log('firebase', firebase);
-
 // Adding icons to project
 library.add(
   // SOLID ICONS

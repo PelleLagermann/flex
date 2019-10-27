@@ -18,6 +18,7 @@
 
 <script>
 // @ is an alias to /src
+import { mapActions } from 'vuex'
 import Btn from '@/components/form/btn.vue';
 import WeekdaySlider from '@/components/weekday-slider.vue';
 
@@ -28,9 +29,13 @@ export default {
     WeekdaySlider,
   },
   methods: {
+    ...mapActions('registrations', ['getRegistrations']),
     startTimer() {
 
     },
+  },
+  mounted() {
+    this.getRegistrations();
   },
 };
 </script>

@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import calendarModule from './modules/calendar-module';
+import registrationsModule from './modules/registrations-module';
 import settingsModule from './modules/settings-module';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    calendar: calendarModule,
+    registrations: registrationsModule,
     settings: settingsModule,
   },
   state: {

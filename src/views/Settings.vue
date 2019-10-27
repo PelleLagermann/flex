@@ -4,7 +4,7 @@
     <h2>Account settings</h2>
     <ul>
       <li>Hours per week: collection af { fromDate: '2019-01-01', hoursPerWeek: 37 }</li>
-      <li></li>
+      <li>Skal vi håndterer at timer efter kl.xx:xx eller timer lagt i weekend måske tæller mere end 1/1?</li>
       <li></li>
     </ul>
     <h2>App settings</h2>
