@@ -3,7 +3,8 @@ import './registerServiceWorker';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
-  faBars, faCog, faExclamationCircle, faHome,
+  faBars, faCog, faEdit, faExclamationCircle, faHome, faMinusCircle,
+  faPlusCircle,
   faSignInAlt, faSignOutAlt, faSlash, faSpinner, faStopwatch,
   faTimes, faUser, faUserCog, faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
@@ -19,8 +20,11 @@ library.add(
   // SOLID ICONS
   faBars,
   faCog,
+  faEdit,
   faExclamationCircle,
   faHome,
+  faMinusCircle,
+  faPlusCircle,
   faSignInAlt,
   faSignOutAlt,
   faSlash,
@@ -43,6 +47,8 @@ Vue.config.productionTip = false;
 let app = null;
 
 firebase.auth().onAuthStateChanged(() => {
+  console.log('CurrentUser', firebase.auth().currentUser);
+
   if (!app) {
     app = new Vue({
       router,
