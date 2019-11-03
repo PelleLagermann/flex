@@ -11,8 +11,15 @@
         <btn @click.prevent="startTimer" class="btn--clear start-timer-btn">
           <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
         </btn>
+
+        <btn @click="showAddManuelRegistration = true">
+          Add manual registration
+          <font-awesome-icon :icon="['fas', 'edit']" class="icon" />    
+        </btn>
       </div>
     </div>
+
+    <manual-registration v-if="showAddManuelRegistration" @close="showAddManuelRegistration = false"></manual-registration>
   </div>
 </template>
 
@@ -21,12 +28,19 @@
 import { mapActions } from 'vuex'
 import Btn from '@/components/form/btn.vue';
 import WeekdaySlider from '@/components/weekday-slider.vue';
+import ManualRegistration from '@/components/manual-registration.vue';
 
 export default {
   name: 'home',
   components: {
-    Btn,
-    WeekdaySlider,
+    Btn,    
+    WeekdaySlider,    
+    ManualRegistration,
+  },
+  data() {
+    return {
+      showAddManuelRegistration: false
+    }
   },
   methods: {
     ...mapActions('registrations', ['getRegistrations']),
