@@ -1,7 +1,7 @@
 <template>
   <div class="center-content--vertical sign-up">    
     <form @submit.prevent="signIn" class="hover-box">
-      <h1 class="hover-box__header">SIGN UP</h1>
+      <h1 class="hover-box__header hover-box__header--center">SIGN UP</h1>
 
       <label-input 
         label="E-mail"
