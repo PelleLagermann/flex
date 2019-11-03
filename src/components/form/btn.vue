@@ -2,9 +2,10 @@
   <component
     :is="elem"
     class="btn"
+    :class="{ 'is-disabled': isDisabled }"
     :href="href"
     @click="clickHandler"
-    v-ripple>
+    v-ripple="false">
     <slot></slot>
     <slot v-if="!isLoading" name="icon"></slot>
     <font-awesome-icon v-else :icon="['fas', 'spinner']" class="icon btn__spinner" /> 
@@ -16,7 +17,8 @@ export default {
   name: 'btn',
   props: {
     href: String,
-    isLoading: Boolean
+    isLoading: Boolean,
+    isDisabled: Boolean
   },
   computed: {
     elem() {
@@ -45,18 +47,7 @@ export default {
     font-size: 1.6rem;
     text-align: center;
     text-decoration: none;
-    transition: box-shadow .2s ease-in-out;
-
-    &:active {
-      box-shadow: 0 0 0 0 rgba(0,0,0,0.5),
-        0 0 0 0 rgba(0,0,0,0.4),
-        0 0 0 0 rgba(0,0,0,0.3),
-        0 0 0 0 var(--box-shadow-tint);        
-    }
-
-    &:focus {
-      outline: 0;
-    }
+    transition: box-shadow .2s ease-in-out;    
 
     .icon {
       margin-left: 1rem;
@@ -64,7 +55,7 @@ export default {
 
     &__spinner {
       animation: rotate 1s infinite linear;
-    }
+    }    
 
     /* SIZE VARIANTS */ 
     &--full {
@@ -108,6 +99,29 @@ export default {
       color: var(--neutral-9);
     }
 
+    /* STATES */
+    &:active:not(:disabled):not(.is-disabled) {
+      box-shadow: 0 0 0 0 rgba(0,0,0,0.5),
+        0 0 0 0 rgba(0,0,0,0.4),
+        0 0 0 0 rgba(0,0,0,0.3),
+        0 0 0 0 var(--box-shadow-tint);        
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:disabled,
+    &.is-disabled {
+      background-color: var(--neutral-7);
+      color: var(--neutral-2);
+      cursor: not-allowed;
+
+      /deep/ .ripple-container {
+        display: none;
+      }
+    }
+
     &--clear {
       display: inline-block;
       margin: 0;
@@ -122,10 +136,11 @@ export default {
 
     &--link {
       display: inline-block;
-      margin: 0;
+      margin-top: 1rem;
       padding: 0;
       border: 0;
       background-color: transparent;
+      text-decoration: underline;
     }
   }
 
