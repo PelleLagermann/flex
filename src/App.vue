@@ -9,6 +9,7 @@
     </main>
 
     <app-footer></app-footer>
+    <snackbar ref="snackbar"></snackbar>
   </div>
 </template>
 
@@ -16,6 +17,7 @@
 import AppFooter from '@/components/app-footer.vue';
 import AppHeader from '@/components/app-header.vue';
 import AppMenu from '@/components/app-menu.vue';
+import snackbar from '@/components/snackbar.vue';
 
 export default {
   name: 'App',
@@ -23,6 +25,7 @@ export default {
     AppFooter,
     AppHeader,
     AppMenu,
+    snackbar,
   },
   data() {
     return { };
@@ -33,6 +36,9 @@ export default {
   methods: {
 
   },
+  mounted() {
+    
+  }
 };
 </script>
 
