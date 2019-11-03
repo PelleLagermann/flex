@@ -41,7 +41,7 @@ export default {
     };
   },
   computed: {
-    ...mapState('registrations', ['activeDate']),
+    ...mapState(['activeDate']),
     ...mapState('settings', ['firstDayOfWeek']),
     ...mapGetters('registrations', ['activeWeek']),
   },
@@ -56,7 +56,7 @@ export default {
     setActiveDate(e, date) {
       // this.$data.activeDate =
       // console.log('e', e);
-      this.$store.commit('registrations/setActiveDate', date.format('YYYY-MM-DD'));
+      this.$store.commit('setActiveDate', date.format('YYYY-MM-DD'));
     },
   },
   mounted() {

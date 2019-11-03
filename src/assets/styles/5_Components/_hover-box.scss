@@ -8,6 +8,11 @@
   background-color: #fff;
 
   &__header {
-    text-align: center;
+    font-size: 2rem;
+    text-align: left;
+
+    &--center {
+      text-align: center;
+    }
   }
 }
