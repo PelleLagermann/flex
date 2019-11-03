@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import store from './store/store';
 import SignIn from './views/SignIn.vue';
 import SignUp from './views/SignUp.vue';
+import ResetPassword from './views/reset-password.vue';
 import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Profile from './views/Profile.vue';
@@ -33,6 +34,11 @@ const router = new Router({
       path: '/sign-up',
       name: 'sign-up',
       component: SignUp,
+    },
+    {
+      path: '/reset-password',
+      name: 'reset-password',
+      component: ResetPassword,
     },
     // {
     //   path: '/about',
@@ -80,16 +86,25 @@ const router = new Router({
       },
     },
   ],
+  // scrollBehavior () {//to, from, savedPosition
+  //   return { selector: '.app-content-wrapper', offset: { x: 0, y: 0 } }
+  //   // if (savedPosition) {
+  //   //   return savedPosition
+  //   // } else {
+  //   //   return { selector: '.app-content-wrapper', offset: { x: 0, y: 0 } }
+  //   // }
+  // },
 });
 
 // Setting up nav-guards
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {  
   const { currentUser } = firebase.auth();
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-  console.log('navGuard - currentUser', currentUser);
-  console.log('navGuard - requiresAuth', requiresAuth);
-  console.log('navGuard - to', to);
+  const appContent = document.querySelector('.app-content-wrapper');
+  if (appContent) {
+    appContent.scrollTo(0,0);
+  }
 
   if (requiresAuth && !currentUser) {
     next('sign-in');
