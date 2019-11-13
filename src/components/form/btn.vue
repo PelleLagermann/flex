@@ -1,14 +1,17 @@
 <template>
   <component
     :is="elem"
+    :type="type"
     class="btn"
     :class="{ 'is-disabled': isDisabled }"
     :href="href"
     @click="clickHandler"
     v-ripple="false">
     <slot></slot>
-    <slot v-if="!isLoading" name="icon"></slot>
-    <font-awesome-icon v-else :icon="['fas', 'spinner']" class="icon btn__spinner" /> 
+    <span v-if="!isLoading" class="btn__icon-wrapper">
+      <slot name="btn"></slot>
+    </span>    
+    <font-awesome-icon v-else :icon="['fas', 'spinner']" class="btn__icon btn__spinner" /> 
   </component>
 </template>
 
@@ -17,6 +20,10 @@ export default {
   name: 'btn',
   props: {
     href: String,
+    type: {
+      type: String,
+      default: 'button'
+    },
     isLoading: Boolean,
     isDisabled: Boolean
   },
@@ -39,8 +46,9 @@ export default {
   @import '../../assets/styles/4_Base/box-shadows';
 
   .btn {
-    display: inline-block;
-    margin-top: 2rem;    
+    display: flex;    
+    justify-content: center;
+    align-items: center;
     padding: .5em 1em;
     border: 0;
     border-radius: 6px;
@@ -49,7 +57,8 @@ export default {
     text-decoration: none;
     transition: box-shadow .2s ease-in-out;    
 
-    .icon {
+    &__icon,
+    &__icon-wrapper:not(:empty) {
       margin-left: 1rem;
     }
 
@@ -123,7 +132,9 @@ export default {
     }
 
     &--clear {
-      display: inline-block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 0;
       padding: 0;
       border: 0;

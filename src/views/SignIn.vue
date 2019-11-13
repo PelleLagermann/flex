@@ -34,13 +34,13 @@
           </template>
         </btn>
 
-        <btn :href="resetPasswordHref" :is-loading="submitting" class="btn--link btn--full">
+        <router-link to="/reset-password" class="reset-password">
           Reset password
-        </btn>
+        </router-link>        
       </div>
     </form>
     
-    <btn :href="signUpHref" :is-loading="navigating" @click.prevent="navigateToSignUp" class="btn--neutral">
+    <btn :href="$router.resolve({ name: 'sign-up' }).href" :is-loading="navigating" @click.prevent="navigateToSignUp" class="btn--neutral">
       Sign up
       <font-awesome-icon :icon="['fas', 'user-plus']" class="icon" />
     </btn>      
@@ -61,9 +61,7 @@ export default {
   data() {
     return {
       email: 'pelj@alka.dk',
-      password: 'Reggie',   
-      signUpHref: '',   
-      resetPasswordHref: '',
+      password: 'Reggie',
       submitting: false,
       navigating: false,
       errorMessage: '',
@@ -98,15 +96,6 @@ export default {
       this.$router.push('sign-up');
     }
   },  
-  mounted() {
-    this.$data.signUpHref = this.$router.resolve({ 
-      name: 'sign-up',
-    }).href;    
-
-    this.$data.resetPasswordHref = this.$router.resolve({ 
-      name: 'reset-password',
-    }).href;
-  },
 };
 </script>
 
@@ -114,7 +103,20 @@ export default {
   @import '../assets/styles/4_Base/box-shadows';
 
   .sign-in {    
+    padding-bottom: 5rem;
+
     &__header { }
     &__form { }
+
+    .reset-password {
+      display: inline-block;
+      width: 100%;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    /deep/ .btn {
+      margin-top: 2rem;
+    }
   }
 </style>

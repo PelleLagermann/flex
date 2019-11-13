@@ -8,7 +8,7 @@ import ResetPassword from './views/reset-password.vue';
 import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Profile from './views/Profile.vue';
-import Settings from './views/Settings.vue';
+import Settings from './views/Settings/Settings.vue';
 import Overview from './views/Overview.vue';
 
 Vue.use(Router);

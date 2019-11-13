@@ -7,35 +7,49 @@
         <div style="width: 100%; height: 40px; background-color: hotpink;"></div>
       </div>
 
-      <div class="buttons">
+      <!-- <div class="buttons">
+        <btn @click.prevent="startTimer" class="btn--clear start-timer-btn">
+          <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
+        </btn>
+        <btn @click.prevent="startTimer" class="btn--clear start-timer-btn">
+          <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
+        </btn>
+        <btn @click.prevent="startTimer" class="btn--clear start-timer-btn">
+          <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
+        </btn>
+        <btn @click.prevent="startTimer" class="btn--clear start-timer-btn">
+          <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
+        </btn>
+        <btn @click.prevent="startTimer" class="btn--clear start-timer-btn">
+          <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
+        </btn>
+        <btn @click.prevent="startTimer" class="btn--clear start-timer-btn">
+          <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
+        </btn>
         <btn @click.prevent="startTimer" class="btn--clear start-timer-btn">
           <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
         </btn>
 
         <btn @click="showAddManuelRegistration = true">
           Add manual registration
-          <font-awesome-icon :icon="['fas', 'edit']" class="icon" />    
+          <font-awesome-icon slot="btn" :icon="['fas', 'edit']" class="icon" />    
         </btn>
-      </div>
-    </div>
-
-    <manual-registration v-if="showAddManuelRegistration" @close="showAddManuelRegistration = false"></manual-registration>
+      </div> -->
+    </div>    
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import { mapActions } from 'vuex'
-import Btn from '@/components/form/btn.vue';
+//import Btn from '@/components/form/btn.vue';
 import WeekdaySlider from '@/components/weekday-slider.vue';
-import ManualRegistration from '@/components/manual-registration.vue';
 
 export default {
   name: 'home',
   components: {
-    Btn,    
-    WeekdaySlider,    
-    ManualRegistration,
+    //Btn,    
+    WeekdaySlider,        
   },
   data() {
     return {
@@ -56,6 +70,9 @@ export default {
 
 <style lang="scss" scoped>
   .home-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     height: 100%;
   }
 
@@ -65,6 +82,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     height: 100%;
+    overflow-y: scroll;
   }
 
   .registrations {

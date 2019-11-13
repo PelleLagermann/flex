@@ -43,6 +43,42 @@ const registrationsModule = {
     }
   },
   actions: {
+    // getAllRegistrations({ commit, state }) {
+    //   const registrations = [];
+    //   let tmpDate = fromDate.clone();
+    //   while(tmpDate.isBefore(toDate)) {
+    //     registrations.push({
+    //       'date': tmpDate.clone()
+    //     });              
+    //     tmpDate = tmpDate.add(1, 'day');
+    //   }
+      
+
+    //   firebase.firestore().collection('registrations')
+    //   .where('userId', '==', firebase.auth().currentUser.uid)
+    //   .where('date', '>=', fromDate.toDate())
+    //   .where('date', '<', toDate.toDate())
+    //   .orderBy("date")
+    //   .get()
+    //   .then(function(querySnapshot) {                
+    //     querySnapshot.forEach(function(doc) {
+    //       const registration = doc.data();                    
+    //       registration.date = dayjs(registration.date.toDate());
+
+    //       registrations.forEach((reg, i) => {
+    //         if (reg.date.isSame(registration.date)) {
+    //           registrations[i] = registration;
+    //         }
+    //       });          
+    //     });
+
+    //     commit('updateRegistrations', registrations);
+    //   })
+    //   .catch(function(error) {
+    //       console.log("Error getting documents: ", error);
+    //   });
+
+    // },
     getRegistrations({ commit, state }, payload) {
       const settings = Object.assign({}, payload);
       const fromDate = settings.fromDate || dayjs(state.activeDate).startOf('week');

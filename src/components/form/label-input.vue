@@ -77,43 +77,40 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-  @import '../../assets/styles/2_Tools/media-queries';
-  @import '../../assets/styles/4_Base/box-shadows';
-
-.label-input {
-  display: block;
-  margin-bottom: 1rem;
-
-  &__label {
+<style scoped lang="scss">  
+  .label-input {
     display: block;
-    width:100%;
-    font-size: 1.4rem;
-  }
+    margin-bottom: 1rem;
 
-  &__input {
-    width: 100%;
-    padding: 8px 15px;
-    border: 1px solid var(--neutral-7);
-    border-radius: 6px;
-    background-color: var(--neutral-9);
-    font-size: 1.6rem;
-    transition: border-color .2s ease-in-out;
-
-    &:focus {
-      border-color: var(--primary-1);
-      outline: 0;
-    }      
-  }
-
-  &.is-invalid {
-    .label-input__label {      
-      color: var(--error-2);
+    &__label {
+      display: block;
+      width:100%;
+      font-size: 1.4rem;
     }
 
-    .label-input__input {      
-      outline: 1px solid var(--error-4);
-    }    
-  }  
-}
+    &__input {
+      width: 100%;
+      padding: 8px 15px;
+      border: 1px solid var(--neutral-7);
+      border-radius: 6px;
+      background-color: var(--neutral-9);
+      font-size: 1.6rem;
+      transition: border-color .2s ease-in-out;
+
+      &:focus {
+        border-color: var(--primary-1);
+        outline: 0;
+      }      
+    }
+
+    &.is-invalid {
+      .label-input__label {      
+        color: var(--error-2);
+      }
+
+      .label-input__input {      
+        outline: 1px solid var(--error-4);
+      }    
+    }  
+  }
 </style>

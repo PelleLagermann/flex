@@ -9,14 +9,18 @@
     </main>
 
     <app-footer></app-footer>
+    
+    <manual-registration v-if="showAddRegistration" @close="toggleAddRegistration(false)"></manual-registration>
     <snackbar ref="snackbar"></snackbar>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import AppFooter from '@/components/app-footer.vue';
 import AppHeader from '@/components/app-header.vue';
 import AppMenu from '@/components/app-menu.vue';
+import ManualRegistration from '@/components/manual-registration.vue';
 import snackbar from '@/components/snackbar.vue';
 
 export default {
@@ -25,16 +29,17 @@ export default {
     AppFooter,
     AppHeader,
     AppMenu,
+    ManualRegistration,
     snackbar,
   },
   data() {
     return { };
   },
   computed: {
-
+    ...mapState(['showAddRegistration']),
   },
   methods: {
-
+    ...mapMutations(['toggleAddRegistration']),
   },
   mounted() {
     
@@ -52,7 +57,6 @@ export default {
   }
 
   .app-content-wrapper {
-    padding-bottom: 5rem;
     overflow-y: scroll;
   }
 </style>

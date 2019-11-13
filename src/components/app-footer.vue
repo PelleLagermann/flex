@@ -4,17 +4,35 @@
       <div class="balance">3t 41m</div>
     </div>
     <div class="app-footer">
-      <btn type="button" @click="toggleMenu" class="btn--clear app-footer__menu-toggle">
-        <font-awesome-icon :icon="['fas', 'bars']" class="icon" />
-      </btn>
-      <div >
+      <div class="app-footer__item">
+        <btn type="button" @click="toggleMenu" class="btn--clear app-footer__timer-btn">
+          <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
+          <span class="label">
+            Start
+          </span>
+        </btn>
+      </div>
 
+      <div class="app-footer__item">
+        <btn type="button" @click="toggleMenu" class="btn--clear app-footer__menu-toggle">
+          <font-awesome-icon :icon="['fas', 'bars']" class="icon" />
+        </btn>        
+      </div>
+
+      <div class="app-footer__item">
+        <btn type="button" @click="toggleAddRegistration" class="btn--clear app-footer__add-btn">
+          <span class="label">
+            Add
+          </span>
+          <font-awesome-icon :icon="['fas', 'edit']" class="icon" />
+        </btn>  
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import Btn from '@/components/form/btn.vue';
 
 export default {
@@ -22,10 +40,17 @@ export default {
   components: {
     Btn,
   },
+  computed: {
+    ...mapState(['showAddRegistration']),
+  },
   methods: {
+    ...mapMutations(['toggleAddRegistration']),
     toggleMenu() {
       this.$store.commit('toggleMenu');
     },
+    addRegistration() {
+
+    }
   },
 };
 </script>
@@ -39,28 +64,63 @@ export default {
   }
 
   .app-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-content: center;
     height: 100%;
-    padding: .7rem 0;
+    padding: .7rem 5vw;
     border-top: 1px solid var(--neutral-0);
     background-color: var(--neutral-3);
+
+    &__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:first-child {
+        justify-content: flex-start;
+      }
+
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
+
+    &__timer-btn,
+    &__add-btn {
+      height: 100%;
+      color: var(--neutral-9);
+      font-size: 1.2rem;
+
+      .icon {
+        font-size: 2.5rem;
+      }
+    }
+
+    &__timer-btn {
+      .label {
+        padding-left: 1rem;
+      }
+    }
+
+    &__add-btn {
+      .label {
+        padding-right: 1rem;
+      }
+    }
 
     &__menu-toggle {
       width: 5rem;
       height: 5rem;
       border-radius: 50%;
+      color: var(--neutral-9);
+      font-size: 3rem;
 
       &:active {
         //background-color: red;
       }
     }
-  }
-
-  .icon {
-    color: var(--neutral-9);
-    font-size: 3rem;
   }
 
   .balance-wrapper {

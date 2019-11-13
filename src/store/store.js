@@ -16,6 +16,7 @@ export default new Vuex.Store({
     activeDate: dayjs(new Date()),
     menuHasBeenOpened: false,
     menuOpen: null,
+    showAddRegistration: false,
     currentUser: {},
     snackbars: []
   },
@@ -58,6 +59,15 @@ export default new Vuex.Store({
 
       if (state.menuOpen) {
         state.menuHasBeenOpened = true;
+      }
+    },
+    toggleAddRegistration(state, payload) {
+      if (payload && payload.forceOpen) {
+        state.showAddRegistration = true;
+      } else if (payload && payload.forceClose) {
+        state.showAddRegistration = false;
+      } else {
+        state.showAddRegistration = !state.showAddRegistration;
       }
     },
   },

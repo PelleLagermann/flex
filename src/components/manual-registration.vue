@@ -1,6 +1,15 @@
 <template>  
     <modal header="Manual registration" :sub-header="activeDate.format('ddd DD MMM YYYY')" @close="$emit('close')">
       <form @submit.prevent="addManualRegistration" slot="body">
+        <radio-group name="reg-type" v-model="regType" :options="[{ value: 'period', text: 'Select period' }]"></radio-group>
+        
+        <div>
+          <input v-model="from" type="time" min="00:00" max="23:59">
+
+          <input v-model="to" type="time" min="00:00" max="23:59">
+        </div>
+        
+        <radio-group name="reg-type" v-model="regType" :options="[{ value: 'value', text: 'Enter value' }]"></radio-group>
         <div class="input-group--horizontal">
           <label-input 
             label="Hours"
@@ -36,6 +45,7 @@ import { mapState, mapActions } from 'vuex';
 import Btn from '@/components/form/btn.vue';
 import LabelInput from '@/components/form/label-input.vue';
 import Modal from '@/components/modal.vue';
+import RadioGroup from '@/components/form/radio-group.vue';
 
 export default {
   name: 'ManualRegistration',  
@@ -43,6 +53,7 @@ export default {
     Btn,
     LabelInput,
     Modal,
+    RadioGroup,
   },
   props: {    
     show: {
@@ -51,9 +62,16 @@ export default {
     },
   },
   data() {
-    return {      
-      hours: "",
-      minutes: "",
+    return {
+      regType: 'value',
+      regTypeOptions: [
+        { value: 'period', text: 'Select period' },
+        { value: 'value', text: 'Enter value' }
+      ],
+      from: '',
+      to: '',
+      hours: '',
+      minutes: '',
       submitting: false
     };
   },

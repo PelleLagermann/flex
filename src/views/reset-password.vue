@@ -1,5 +1,5 @@
 <template>
-  <div class="center-content--vertical sign-up">    
+  <div class="center-content--vertical sign-up reset-password">    
     <form @submit.prevent="resetPassword" class="hover-box">
       <h1 class="hover-box__header hover-box__header--center">RESET PASSWORD</h1>
 
@@ -91,5 +91,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .reset-password {
+    padding-bottom: 5rem;
 
+    /deep/ .btn {
+      margin-top: 2rem;
+    }
+  }
 </style>

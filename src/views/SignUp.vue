@@ -89,5 +89,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .sign-up {
+    padding-bottom: 5rem;
 
+    /deep/ .btn {
+      margin-top: 2rem;
+    }
+  }
 </style>

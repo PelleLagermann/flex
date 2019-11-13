@@ -26,6 +26,7 @@
     },
     data() {
       return {
+        accordionWrapper: null,
         isOpen: false,
       }
     },
@@ -33,15 +34,29 @@
       toggle(show) {        
         if (show !== this.$data.isOpen) {
           this.$data.isOpen = show;
-          this.$parent.toggle(this, this.isOpen);
+          this.$data.accordionWrapper.toggle(this, this.isOpen); 
         } 
       },    
     },
     beforeMount() {
-      this.$parent.register(this);
+      let ancestor = this.$parent;
+      
+      while(ancestor && !this.$data.accordionWrapper) {                
+        if (ancestor.constructor.options.name === 'accordion') {
+          this.$data.accordionWrapper = ancestor;
+        } else {
+          ancestor = ancestor.$parent;
+        }        
+      }
+      
+      if (this.$data.accordionWrapper) {
+        this.$data.accordionWrapper.register(this);
+      } else {
+        console.error("<accodion-item></accodion-item> must be used as a descendant of <accordion></accordion>");
+      }      
     },
     beforeDestroy() {
-      this.$parent.unregister(this._uid);
+      this.$data.accordionWrapper.unregister(this._uid);
     },
   };
 </script>
