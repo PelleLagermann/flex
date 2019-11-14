@@ -1,6 +1,6 @@
 <template>
   <div class="center-content--vertical sign-up">    
-    <form @submit.prevent="signIn" class="hover-box">
+    <form @submit.prevent="signUp" class="hover-box">
       <h1 class="hover-box__header hover-box__header--center">SIGN UP</h1>
 
       <label-input 
@@ -42,6 +42,7 @@
 
 <script>
 import firebase from 'firebase';
+import { mapActions } from 'vuex';
 import btn from '@/components/form/btn.vue';
 import labelInput from '@/components/form/label-input.vue';
 
@@ -64,11 +65,13 @@ export default {
 
   },
   methods: {
-    signIn() {
+    ...mapActions('settings', ['initSettingsForNewUser']),
+    signUp() {      
       this.$data.submitting = true;
       firebase.auth().createUserWithEmailAndPassword(this.$data.email, this.$data.password)
         .then(() => {
           this.$router.replace('home');
+          this.initSettingsForNewUser();
         })
         .catch((error) => {
           console.log('sign Up errro', error);

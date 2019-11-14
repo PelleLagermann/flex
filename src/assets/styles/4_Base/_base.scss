@@ -36,3 +36,11 @@ textarea,
 select {
     color: var(--neutral-0);
 }
+
+a:link,
+a:hover,
+a:focus,
+a:active,
+a:visited {
+    color: var(--primary-1);
+}

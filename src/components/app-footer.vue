@@ -5,7 +5,7 @@
     </div>
     <div class="app-footer">
       <div class="app-footer__item">
-        <btn type="button" @click="toggleMenu" class="btn--clear app-footer__timer-btn">
+        <btn v-if="currentUser" type="button" @click="toggleMenu" class="btn--clear app-footer__timer-btn">
           <font-awesome-icon :icon="['fas', 'stopwatch']" class="icon" />
           <span class="label">
             Start
@@ -20,7 +20,7 @@
       </div>
 
       <div class="app-footer__item">
-        <btn type="button" @click="toggleAddRegistration" class="btn--clear app-footer__add-btn">
+        <btn v-if="currentUser" type="button" @click="toggleAddRegistration" class="btn--clear app-footer__add-btn">
           <span class="label">
             Add
           </span>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex';
 import Btn from '@/components/form/btn.vue';
 
 export default {
@@ -41,7 +41,7 @@ export default {
     Btn,
   },
   computed: {
-    ...mapState(['showAddRegistration']),
+    ...mapState(['currentUser', 'showAddRegistration']),
   },
   methods: {
     ...mapMutations(['toggleAddRegistration']),
@@ -69,7 +69,7 @@ export default {
     justify-content: space-between;
     align-content: center;
     height: 100%;
-    padding: .7rem 5vw;
+    padding: .7rem 0;
     border-top: 1px solid var(--neutral-0);
     background-color: var(--neutral-3);
 
@@ -80,10 +80,18 @@ export default {
 
       &:first-child {
         justify-content: flex-start;
+
+        .btn {
+          padding-left: 5vw;
+        }        
       }
 
       &:last-child {
         justify-content: flex-end;
+        
+        .btn {
+          padding-right: 5vw;
+        }        
       }
     }
 
@@ -143,7 +151,7 @@ export default {
     font-size: 1.6rem;
     font-weight: 300;
     letter-spacing: .2rem;
-    transform: translate(-50%, calc(-100% + 1px))
+    transform: translate(-50%, calc(-100% + 3px))
   }
 
   .balance:before,

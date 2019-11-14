@@ -47,8 +47,6 @@ Vue.config.productionTip = false;
 let app = null;
 
 firebase.auth().onAuthStateChanged(() => {
-  console.log('CurrentUser', firebase.auth().currentUser);
-
   if (!app) {
     app = new Vue({
       router,
@@ -56,4 +54,6 @@ firebase.auth().onAuthStateChanged(() => {
       render: h => h(App),
     }).$mount('#app');
   }
+
+  store.commit('setCurrentUser');
 });
