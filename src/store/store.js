@@ -3,14 +3,14 @@ import firebase from 'firebase';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import registrationsModule from './modules/registrations-module';
-import settingsModule from './modules/settings-module';
+import userModule from './modules/user-module';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
     registrations: registrationsModule,
-    settings: settingsModule,
+    user: userModule,
   },
   state: {
     activeDate: dayjs(new Date()),

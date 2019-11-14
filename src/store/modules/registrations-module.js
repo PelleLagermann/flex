@@ -8,7 +8,7 @@ dayjs.locale(daLocale);
 const registrationsModule = {
   namespaced: true,
   state: {    
-    registrations: {}
+    userRegistrations: []
   },
   getters: {    
     activeWeek: (rootState) => {
@@ -29,95 +29,71 @@ const registrationsModule = {
     // },
   },
   mutations: {    
-    updateRegistrations(state, registrations) {
-      console.log("updateRegistrations", registrations);
-      state.registrations = registrations;
-      // registrations.forEach((registration) => {
-      //   console.log('registration date', typeof registration.date);
-      //   const regDate = registration.date instanceof Date ? registration.date : registration.date.toDate();
-      //   console.log("regDate", regDate);
-      
-      //   const regKey = `${regDate.getFullYear()}-${regDate.getMonth()}-${regDate.getDate()}`;        
-      //   state.registrations[regKey] = registration;
-      // });
+    setUserRegistrations(state, registrations) {
+      state.userRegistrations = registrations;
     }
   },
   actions: {
-    // getAllRegistrations({ commit, state }) {
-    //   const registrations = [];
-    //   let tmpDate = fromDate.clone();
-    //   while(tmpDate.isBefore(toDate)) {
-    //     registrations.push({
-    //       'date': tmpDate.clone()
-    //     });              
-    //     tmpDate = tmpDate.add(1, 'day');
-    //   }
-      
-
-    //   firebase.firestore().collection('registrations')
-    //   .where('userId', '==', firebase.auth().currentUser.uid)
-    //   .where('date', '>=', fromDate.toDate())
-    //   .where('date', '<', toDate.toDate())
-    //   .orderBy("date")
-    //   .get()
-    //   .then(function(querySnapshot) {                
-    //     querySnapshot.forEach(function(doc) {
-    //       const registration = doc.data();                    
-    //       registration.date = dayjs(registration.date.toDate());
-
-    //       registrations.forEach((reg, i) => {
-    //         if (reg.date.isSame(registration.date)) {
-    //           registrations[i] = registration;
-    //         }
-    //       });          
-    //     });
-
-    //     commit('updateRegistrations', registrations);
-    //   })
-    //   .catch(function(error) {
-    //       console.log("Error getting documents: ", error);
-    //   });
-
-    // },
-    getRegistrations({ commit, state }, payload) {
-      const settings = Object.assign({}, payload);
-      const fromDate = settings.fromDate || dayjs(state.activeDate).startOf('week');
-      const toDate = settings.toDate || dayjs(state.activeDate).startOf('week').add(7, 'day');
-      
-      // Build empty data objects
-      const registrations = [];
-      let tmpDate = fromDate.clone();      
-      while(tmpDate.isBefore(toDate)) {
-        registrations.push({
-          'date': tmpDate.clone()
-        });              
-        tmpDate = tmpDate.add(1, 'day');
-      }
-      console.log(tmpDate, fromDate);
-
+    getAllRegistrations({commit}) {
       firebase.firestore().collection('registrations')
       .where('userId', '==', firebase.auth().currentUser.uid)
-      .where('date', '>=', fromDate.toDate())
-      .where('date', '<', toDate.toDate())
       .orderBy("date")
       .get()
-      .then(function(querySnapshot) {                
+      .then(function(querySnapshot) { 
+        let registrations = [];
+        
         querySnapshot.forEach(function(doc) {
-          const registration = doc.data();                    
+          const registration = doc.data();          
           registration.date = dayjs(registration.date.toDate());
 
-          registrations.forEach((reg, i) => {
-            if (reg.date.isSame(registration.date)) {
-              registrations[i] = registration;
-            }
-          });          
+          registrations.push(registration);        
         });
 
-        commit('updateRegistrations', registrations);
+        commit('setUserRegistrations', registrations);
       })
       .catch(function(error) {
           console.log("Error getting documents: ", error);
       });
+    },
+    getRegistrations(/*{ commit, state }, payload*/) {
+      // const settings = Object.assign({}, payload);
+      // const fromDate = settings.fromDate || dayjs(state.activeDate).startOf('week');
+      // const toDate = settings.toDate || dayjs(state.activeDate).startOf('week').add(7, 'day');
+      
+      // // Build empty data objects
+      // const registrations = [];
+      // let tmpDate = fromDate.clone();      
+      // while(tmpDate.isBefore(toDate)) {
+      //   registrations.push({
+      //     'date': tmpDate.clone()
+      //   });              
+      //   tmpDate = tmpDate.add(1, 'day');
+      // }
+      // console.log(tmpDate, fromDate);
+
+      // firebase.firestore().collection('registrations')
+      // .where('userId', '==', firebase.auth().currentUser.uid)
+      // .where('date', '>=', fromDate.toDate())
+      // .where('date', '<', toDate.toDate())
+      // .orderBy("date")
+      // .get()
+      // .then(function(querySnapshot) {                
+      //   querySnapshot.forEach(function(doc) {
+      //     const registration = doc.data();                    
+      //     registration.date = dayjs(registration.date.toDate());
+
+      //     registrations.forEach((reg, i) => {
+      //       if (reg.date.isSame(registration.date)) {
+      //         registrations[i] = registration;
+      //       }
+      //     });          
+      //   });
+
+      //   commit('updateRegistrations', registrations);
+      // })
+      // .catch(function(error) {
+      //     console.log("Error getting documents: ", error);
+      // });
 
     },
     /*

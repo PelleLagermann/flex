@@ -1,9 +1,10 @@
 import firebase from 'firebase';
 import dayjs from 'dayjs';
 
-const settingsModule = {
+const userModule = {
   namespaced: true,
   state: {
+    userData: {},
     firstDayOfWeek: '1', // Sunday - Saturday : 0 - 6
     hoursPerWeek: -1, //
     language: 'DA', // [ 'EN', 'DA' ]
@@ -13,7 +14,9 @@ const settingsModule = {
 
   },
   mutations: {
-
+    setUserData(state, userData) {
+        Object.assign(state.userData, userData);
+    }
   },
   actions: {
     initSettingsForNewUser() {
@@ -32,9 +35,20 @@ const settingsModule = {
           console.error("Error writing document: ", error);
       });
     },
+
+    getUserData({commit}) {
+      const userId = firebase.auth().currentUser.uid;
+
+      firebase.firestore().collection('users')
+      .doc(userId)
+      .get()
+      .then(function(userData) {
+        commit('setUserData', userData.data());
+      });
+    }
     // Load settings from Firebase
     // Set dayjs locale based on language
   },
 };
 
-export default settingsModule;
+export default userModule;

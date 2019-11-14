@@ -56,4 +56,9 @@ firebase.auth().onAuthStateChanged(() => {
   }
 
   store.commit('setCurrentUser');
+
+  if(firebase.auth().currentUser){
+    store.dispatch('user/getUserData');
+    store.dispatch('registrations/getAllRegistrations');
+  }
 });
