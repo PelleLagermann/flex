@@ -14,14 +14,14 @@
 
           <span class="weekday-slider__item-btn-inner">
             <span class="weekday-slider__item-day">{{day.date.format('ddd')}}</span>
-            <span class="weekday-slider__item-hours">
-              7,75
+            <span class="weekday-slider__item-hours">              
+              {{dayTotal(day)}}
               <!-- {{weekday.hours}} -->
             </span>
           </span>
         </btn>
       </li>
-    </ol>
+    </ol>    
   </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
   computed: {
     ...mapState(['activeDate']),
     ...mapState('settings', ['firstDayOfWeek']),
-    ...mapGetters('registrations', ['activeWeek']),
+    ...mapGetters('registrations', ['activeWeek', 'registrations']),
   },
   methods: {
     isToday(date) {
@@ -58,18 +58,33 @@ export default {
       // console.log('e', e);
       this.$store.commit('setActiveDate', date.format('YYYY-MM-DD'));
     },
+    dayTotal(day) {
+      if (!day.registrations) {
+        return '-';
+      }
+      
+      let hours = 0;
+      let minutes = 0;
+
+      day.registrations.forEach(reg => {
+        hours += reg.hours;
+        minutes += reg.minutes;
+
+        if (minutes >= 60) {
+          hours += 1;
+          minutes -= 60;
+        }
+      });      
+
+      if (!hours && !minutes) {
+        return '-';
+      }
+
+      return `${hours}:${minutes}`;
+    },
   },
   mounted() {
-    console.log('activeWeek', this.activeWeek);
-
-    const startDate = dayjs('2019-09-30');
-    for (let i = 0; i < 7; i++) {
-      const date = startDate.add(i, 'day');
-      this.$data.weekdays.push({
-        date,
-        hours: 9.25,
-      });
-    }
+    console.log('activeWeek', this.activeWeek);    
   },
 };
 </script>
@@ -151,7 +166,7 @@ export default {
 
     &__item-hours {
       color: var(--neutral-9);
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
   }
 </style>

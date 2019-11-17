@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 const userModule = {
   namespaced: true,
   state: {
+    userDataLoading: false,
     userData: {},
     firstDayOfWeek: '1', // Sunday - Saturday : 0 - 6
     hoursPerWeek: -1, //
@@ -14,9 +15,12 @@ const userModule = {
 
   },
   mutations: {
+    setUserDataLoading(state, isLoading) {
+      state.userDataLoading = isLoading;
+    },
     setUserData(state, userData) {
-        Object.assign(state.userData, userData);
-    }
+      Object.assign(state.userData, userData);
+  }
   },
   actions: {
     initSettingsForNewUser() {
@@ -37,13 +41,18 @@ const userModule = {
     },
 
     getUserData({commit}) {
+      commit('setUserDataLoading', true);
       const userId = firebase.auth().currentUser.uid;
 
       firebase.firestore().collection('users')
       .doc(userId)
       .get()
       .then(function(userData) {
-        commit('setUserData', userData.data());
+        const data = userData.data();
+        data.startDate = dayjs(data.startDate.toDate())
+        commit('setUserData', data);
+      }).finally(() => {
+        commit('setUserDataLoading', false);
       });
     }
     // Load settings from Firebase

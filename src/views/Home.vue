@@ -2,6 +2,21 @@
   <div class="home-screen">
     <weekday-slider></weekday-slider>
 
+    <div class="active-day">
+      <div class="active-day__date-wrapper">
+        <div class="active-day__date">
+          {{activeDate.format('YYYY-MM-DD')}}
+        </div>        
+        <h2 class="active-day__day">
+          {{activeDate.format('dddd')}}
+        </h2>        
+      </div>
+
+      <div class="active-day__registrations-wrapper">
+        {{activeDay.registrations.length}}
+      </div>      
+    </div>
+
     <div class="registrations-wrapper">
       <div class="registrations">
         <div style="width: 100%; height: 40px; background-color: hotpink;"></div>
@@ -41,8 +56,8 @@
 
 <script>
 // @ is an alias to /src
-import { mapActions } from 'vuex'
 //import Btn from '@/components/form/btn.vue';
+import { mapState, mapGetters } from 'vuex';
 import WeekdaySlider from '@/components/weekday-slider.vue';
 
 export default {
@@ -56,14 +71,17 @@ export default {
       showAddManuelRegistration: false
     }
   },
-  methods: {
-    ...mapActions('registrations', ['getRegistrations']),
+  computed: {
+    ...mapState(['activeDate']),
+    ...mapGetters('registrations', ['activeDay']),
+  },
+  methods: {    
     startTimer() {
 
     },
   },
   mounted() {
-    this.getRegistrations();
+    
   },
 };
 </script>
@@ -74,6 +92,22 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
+  }
+
+  .active-day {
+    margin: 0;
+  }
+
+  .active-day__date-wrapper {
+    text-align: center;
+  }
+
+  .active-day__day {
+    text-transform: capitalize; 
+  }
+
+  .active-day__date {
+
   }
 
   .registrations-wrapper {

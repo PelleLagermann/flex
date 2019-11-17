@@ -86,15 +86,11 @@ export default {
     addManualRegistration() {
       if (this.formValid) {
         this.$data.submitting = true;
-
-        let registrationInput = [this.$data.hours, this.$data.minutes];
-        for (let i = 0; i < registrationInput.length; i++) {
-          if (registrationInput[i].length === 0) {
-            registrationInput[i] = '0';
-          }
-        }
         
-        this.submitRegistration({ hours: registrationInput[0], minutes: registrationInput[1] })
+        let hours = this.$data.hours.length > 0 ? parseInt(this.$data.hours) : 0;
+        let minutes = this.$data.minutes.length > 0 ? parseInt(this.$data.minutes) : 0;
+
+        this.submitRegistration({ hours: hours, minutes: minutes })
           .then(() => {
             
           }).catch((error) => {

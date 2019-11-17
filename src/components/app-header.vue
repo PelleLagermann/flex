@@ -63,7 +63,7 @@ export default {
 
     .header-logo {
       margin: 1rem 0;
-      color: var(--primary-6);
+      color: var(--primary-3);
       font-size: 2.5rem;
     }
 

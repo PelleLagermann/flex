@@ -20,6 +20,12 @@ export default new Vuex.Store({
     currentUser: {},
     snackbars: []
   },
+  getters: {
+    loadingData(state) {
+      return state.user.userDataLoading || 
+             state.registrations.userRegistrationsLoading;
+    }
+  },
   mutations: {
     setCurrentUser(state) {
       state.currentUser = firebase.auth().currentUser;
@@ -69,7 +75,7 @@ export default new Vuex.Store({
       } else {
         state.showAddRegistration = !state.showAddRegistration;
       }
-    },
+    }
   },
   actions: {
 

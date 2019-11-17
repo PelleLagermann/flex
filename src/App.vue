@@ -3,8 +3,9 @@
     <app-header></app-header>
 
     <main class="app-content-wrapper">
-      <router-view/>
-
+      <loading-spinner v-if="loadingData"></loading-spinner>      
+      <router-view v-else />
+      
       <app-menu></app-menu>
     </main>
 
@@ -16,10 +17,11 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 import AppFooter from '@/components/app-footer.vue';
 import AppHeader from '@/components/app-header.vue';
 import AppMenu from '@/components/app-menu.vue';
+import LoadingSpinner from '@/components/loading-spinner.vue';
 import ManualRegistration from '@/components/manual-registration.vue';
 import snackbar from '@/components/snackbar.vue';
 
@@ -29,6 +31,7 @@ export default {
     AppFooter,
     AppHeader,
     AppMenu,
+    LoadingSpinner,
     ManualRegistration,
     snackbar,
   },
@@ -37,6 +40,7 @@ export default {
   },
   computed: {
     ...mapState(['showAddRegistration']),
+    ...mapGetters(['loadingData']),
   },
   methods: {
     ...mapMutations(['toggleAddRegistration']),
@@ -58,5 +62,5 @@ export default {
 
   .app-content-wrapper {
     overflow-y: scroll;
-  }
+  }  
 </style>
