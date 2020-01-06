@@ -12,7 +12,10 @@ const registrationsModule = {
     userRegistrationsLoading: false,
     userRegistrations: []
   },
-  getters: {    
+  getters: { 
+    registeredToday: (state, getters) => {      
+      return state.userRegistrations.find(reg => reg.date.isSame(getters.activeDay.date, 'day'));      
+    },  
     registrations: (state, getters, rootState) => {      
       const registrations = [];
       const startDate = rootState?.user?.userData?.startDate;
@@ -47,7 +50,7 @@ const registrationsModule = {
     activeDay: (state, getters, rootState) => {      
       if (getters.registrations.length > 0) {        
         return getters.registrations.find(reg => reg.date.isSame(rootState.activeDate, 'day'));        
-      }            
+      }           
     },
     activeWeek: (state, getters, rootState) => {
       const activeWeek = [];

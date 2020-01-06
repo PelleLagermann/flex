@@ -1,7 +1,7 @@
 <template>
   <div class="app-footer-wrapper">
     <div class="balance-wrapper">
-      <div class="balance">3t 41m</div>
+      <div class="balance">{{regToday}}</div>
     </div>
     <div class="app-footer">
       <div class="app-footer__item">
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 import Btn from '@/components/form/btn.vue';
 
 export default {
@@ -42,6 +42,10 @@ export default {
   },
   computed: {
     ...mapState(['currentUser', 'showAddRegistration']),
+    ...mapGetters('registrations', ['registeredToday']),
+    regToday() {
+      return this.registeredToday?.total || '    ';
+    }    
   },
   methods: {
     ...mapMutations(['toggleAddRegistration']),
