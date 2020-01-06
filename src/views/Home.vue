@@ -14,6 +14,19 @@
 
       <div class="active-day__registrations-wrapper">
         {{activeDay.registrations.length}}
+        <div class="registration" v-for="registration in activeDay.registrations" v-bind:key="registration.activeDate">
+          <div class="registration-hour" v-if="registration.hours > 0">
+            {{registration.hours}} {{registration.hours > 1 ? 'timer' : 'time' }}
+          </div>
+          <div class="registration-minutes" v-if="registration.minutes > 0">
+            {{registration.minutes}} minutter
+          </div>
+          <div class="registration-edit">
+            <btn type="button" @click="editRegistration" class="btn--clear">
+              <font-awesome-icon :icon="['fas', 'edit']" class="icon" />
+            </btn>       
+          </div>
+        </div>
       </div>      
     </div>
 
@@ -59,11 +72,12 @@
 //import Btn from '@/components/form/btn.vue';
 import { mapState, mapGetters } from 'vuex';
 import WeekdaySlider from '@/components/weekday-slider.vue';
+import Btn from '@/components/form/btn.vue';
 
 export default {
   name: 'home',
   components: {
-    //Btn,    
+    Btn,    
     WeekdaySlider,        
   },
   data() {
@@ -79,6 +93,10 @@ export default {
     startTimer() {
 
     },
+
+    editRegistration() {
+
+    }
   },
   mounted() {
     
@@ -108,6 +126,34 @@ export default {
 
   .active-day__date {
 
+  }
+
+  .registration {
+    color: var(--neutral-8);
+    padding: 10px 15px;
+    position: relative;
+    margin: 8px 15%;
+    box-shadow: inset 0px 0px 3px 0px var(--primary-1);
+    background-color: var(--primary-3);
+  }
+
+  .registration-hour {
+    display: inline-block;    
+    margin-right: 5px;
+  }
+
+  .registration-minutes {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+    .registration-edit button {
+      color: white;
+      position: absolute !important;
+      right: 10px;
+      padding: 0 5px;
+      top: 10px;
+      display: inline-block;
   }
 
   .registrations-wrapper {
